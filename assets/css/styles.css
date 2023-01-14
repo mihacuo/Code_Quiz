@@ -48,25 +48,17 @@ ol {
 
 li {
   padding: 15px;
+  display: inline;
   border-radius: 5px;
-  margin: 20px;
+  margin: 5px;
   list-style: decimal inside none;
+  background-color: #f3edfc;
+  width: auto;
 }
 
-li:nth-child(odd) {
-  background-color: #f3edfc;
-}
-li:nth-child(odd):hover {
-  background-color: #d0c0e7;
-}
-li:nth-child(even) {
-  background-color: #856fa5;
-}
-li:nth-child(even):hover{
-  background-color: #563d7c;
-}
 li:hover{
   cursor: pointer;
+  background-color: #d0c0e7;
 }
 .wrapper {
   margin: 100px auto 0 auto;

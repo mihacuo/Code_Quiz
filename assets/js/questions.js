@@ -20,5 +20,36 @@ questionsBank = [
       'JavaScript is not as powerful as other languages like Java, Python etc.'
     ],
     answerIndex: 2
+  },
+  {
+    question: "Inside which HTML element do we put the JavaScript?",
+    answers: [
+      '<javascript>',
+      '<scripting>',
+      '<js>',
+      '<script>'
+    ],
+    answerIndex: 3
+  },
+  {
+    question: "Where is the correct place to insert a JavaScript?",
+    answers: [
+      'Within <head> tags',
+      'Within <body> tags',
+      'After the closing </html> tag'
+    ],
+    answerIndex: 1
+  },
+  {
+    question: "Which one is is loop in Javascript?",
+    answers: [
+      'for () {} loop',
+      'for/in',
+      'forEach',
+      'while',
+      'do/while',
+      'All of the above'
+    ],
+    answerIndex: 5
   }
 ]
