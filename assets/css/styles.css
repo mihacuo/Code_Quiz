@@ -42,17 +42,32 @@ ol {
   padding-left: 0px;
   max-height: 400px;
   overflow: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 li {
-  padding: 5px;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 20px;
   list-style: decimal inside none;
 }
 
 li:nth-child(odd) {
   background-color: #f3edfc;
 }
-
+li:nth-child(odd):hover {
+  background-color: #d0c0e7;
+}
+li:nth-child(even) {
+  background-color: #856fa5;
+}
+li:nth-child(even):hover{
+  background-color: #563d7c;
+}
+li:hover{
+  cursor: pointer;
+}
 .wrapper {
   margin: 100px auto 0 auto;
   max-width: 600px;
