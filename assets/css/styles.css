@@ -79,6 +79,11 @@ li:hover{
   top: 10px;
   left: 10px;
 }
+.current-score {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+}
 
 .feedback {
   font-style: italic;

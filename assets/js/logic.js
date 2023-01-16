@@ -1,6 +1,5 @@
 console.log("Loaded logic.js");
 
-
 // how many seconds per question
 secsPerQuestion = 20;
 
@@ -19,9 +18,18 @@ var questionTitle = document.getElementById("question-title");
 var questionSection = document.getElementById("questions");
 var multipleAnswers = document.getElementById("choices");
 var intro = document.getElementById("intro");
-intro.textContent = intro.textContent +
- "Total questions: " + questionsBank.length +
-". Quiz time: " + quizTime + " seconds.";
+var totalPoints = 0;
+var pointsPerQuestion = 3;
+// this is the current question index
+var questionIndex = 0;
+
+intro.textContent =
+  intro.textContent +
+  "Total questions: " +
+  questionsBank.length +
+  ". Quiz time: " +
+  quizTime +
+  " seconds.";
 
 // Let set default Time display
 timeLeft.textContent = quizTime;
@@ -31,27 +39,55 @@ function startQuiz(event) {
   quizTime--;
   timeLeft.textContent = quizTime;
   if (quizTime === 0) {
-    clearInterval(quizTimer);
-    window.location.href = "highscores.html";
+    stopQuiz;
   }
+}
+
+function stopQuiz() {
+  clearInterval(quizTimer);
+  window.location.href = "highscores.html";
 }
 
 // function will load a question, add eventlisteners
 function showQuestion(num) {
-  questionTitle.textContent = questionsBank[num]["question"];
+  console.log("num", num);
+  if (num === questionsBank.length) {
+    stopQuiz();
+    return;
+  }
+  questionTitle.innerHTML =
+    "Question " +
+    String(num + 1) +
+    "out of " +
+    String(questionsBank.length) +
+    ". ";
+  questionTitle.textContent += questionsBank[num]["question"];
   var answersSection = document.createElement("ol");
   for (j = 0; j < questionsBank[num]["answers"].length; j++) {
     var answerTAG = document.createElement("li");
     answerTAG.textContent = questionsBank[num]["answers"][j];
     answerTAG.setAttribute("data-chosen-answer", j);
-    answerTAG.addEventListener("click", function(event) {
-      console.log('clicked');
-      console.log(event.target.dataset)
+    answerTAG.addEventListener("click", function (event) {
+      console.log("clicked");
+      console.log(event.target.dataset.chosenAnswer);
+      if (
+        event.target.dataset.chosenAnswer == questionsBank[num]["answerIndex"]
+      ) {
+        console.log("correct");
+        totalPoints += pointsPerQuestion;
+      } else {
+        console.log("incorrect");
+      }
+      console.log(totalPoints);
+      // check if this is the last question
+
+      answersSection.remove();
+      questionIndex++;
+      showQuestion(questionIndex);
     });
     answersSection.appendChild(answerTAG);
-
   }
-  multipleAnswers.appendChild(answersSection)
+  multipleAnswers.appendChild(answersSection);
 }
 
 startButton.addEventListener("click", function (event) {
@@ -60,6 +96,4 @@ startButton.addEventListener("click", function (event) {
   startScreen.setAttribute("class", "hide");
   questionSection.setAttribute("class", "");
   showQuestion(0);
-  
-
 });
