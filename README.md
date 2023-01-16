@@ -2,6 +2,9 @@
 
 Quiz on the knowledge of JavaScipt
 
+## Screenshot
+![app screenshot](/assets/img/Screenshot1.png)
+
 ## Description
 
 A Multiple choice app that will test your JavaScipt knwledge
