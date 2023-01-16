@@ -56,8 +56,8 @@ saveScoreForm.setAttribute("class", "saltChiliRibs")
     // add to highscores table
     table.push(newEntry);
     //hide save score
-    saveScoreForm.setAttribute("class", "hide")
-  
+    saveScoreForm.setAttribute("class", "hide");
+    invitationSection.setAttribute("class", "hide");
   // sort table
   // save table to localstorage
     saveAndRedraw(table);
@@ -91,6 +91,6 @@ function redrawHighscores(table) {
 
 function sortTable(table) {
   for (var i = 0; i < table.length; i++) {
-    
+
   }
 }
