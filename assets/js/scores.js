@@ -84,7 +84,7 @@ function redrawHighscores(table) {
   for (var i = 0; i < table.length; i++) {
     
     var liChild = document.createElement("li");
-    var spacer = "_".repeat(40 - (table[i]["fname"]+table[i]["lname"]).length);
+    var spacer = "_";
     liChild.textContent = table[i]["fname"] + " " + 
                           table[i]["lname"] + spacer + 
                           table[i]["score"];
