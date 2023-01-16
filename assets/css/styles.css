@@ -64,6 +64,20 @@ li:hover{
   margin: 100px auto 0 auto;
   max-width: 600px;
 }
+.correct1 {
+  background-color: aquamarine;
+}
+
+
+.incorrect1{
+  background-color: rgb(221, 161, 157);
+}
+#feedback {
+  text-align: center;
+  padding: 30px;
+}
+
+
 
 .hide {
   display: none;
@@ -79,19 +93,8 @@ li:hover{
   top: 10px;
   left: 10px;
 }
-.current-score {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-}
-
-.feedback {
-  font-style: italic;
-  font-size: 120%;
-  margin-top: 20px;
-  padding-top: 10px;
-  color: gray;
-  border-top: 2px solid #ccc;
+#stats{
+  text-align: center;
 }
 
 .timer {

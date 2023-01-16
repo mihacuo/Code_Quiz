@@ -18,11 +18,15 @@ var questionTitle = document.getElementById("question-title");
 var questionSection = document.getElementById("questions");
 var multipleAnswers = document.getElementById("choices");
 var intro = document.getElementById("intro");
+var rules1 = document.getElementById("rules-1");
+var statsSection = document.getElementById("stats");
+var feedbackSection = document.getElementById("feedback");
 var totalPoints = 0;
 var pointsPerQuestion = 3;
 // this is the current question index
 var questionIndex = 0;
 
+// intro of the information on the questions
 intro.textContent =
   intro.textContent +
   "Total questions: " +
@@ -30,6 +34,7 @@ intro.textContent =
   ". Quiz time: " +
   quizTime +
   " seconds.";
+  rules1.textContent = pointsPerQuestion + " points per questions";
 
 // Let set default Time display
 timeLeft.textContent = quizTime;
@@ -37,14 +42,16 @@ timeLeft.textContent = quizTime;
 function startQuiz(event) {
   //console.log(quizTime);
   quizTime--;
+  console.log(quizTime);
   timeLeft.textContent = quizTime;
-  if (quizTime === 0) {
-    stopQuiz;
+  if (quizTime < 1) {
+    stopQuiz();
   }
 }
 
 function stopQuiz() {
   clearInterval(quizTimer);
+  localStorage.setItem("totalPoints", totalPoints)
   window.location.href = "highscores.html";
 }
 
@@ -55,13 +62,13 @@ function showQuestion(num) {
     stopQuiz();
     return;
   }
-  questionTitle.innerHTML =
+  statsSection.textContent =
     "Question " +
     String(num + 1) +
-    "out of " +
+    " out of " +
     String(questionsBank.length) +
-    ". ";
-  questionTitle.textContent += questionsBank[num]["question"];
+    ". " + "Score: " + String(totalPoints);
+  questionTitle.textContent = questionsBank[num]["question"] + "(3 points)";
   var answersSection = document.createElement("ol");
   for (j = 0; j < questionsBank[num]["answers"].length; j++) {
     var answerTAG = document.createElement("li");
@@ -75,8 +82,14 @@ function showQuestion(num) {
       ) {
         console.log("correct");
         totalPoints += pointsPerQuestion;
+        feedbackSection.textContent = "Correct, you earned " 
+        + pointsPerQuestion +" points!";
+        feedbackSection.setAttribute("class", "correct1");
       } else {
         console.log("incorrect");
+        feedbackSection.textContent = "Incorrect, timer decreased by 10 seconds"
+        feedbackSection.setAttribute("class", "incorrect1");
+        quizTime -= 10;
       }
       console.log(totalPoints);
       // check if this is the last question
@@ -97,3 +110,4 @@ startButton.addEventListener("click", function (event) {
   questionSection.setAttribute("class", "");
   showQuestion(0);
 });
+
