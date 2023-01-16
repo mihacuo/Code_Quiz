@@ -70,6 +70,9 @@ saveScoreForm.setAttribute("class", "saltChiliRibs")
 }
 
 function saveAndRedraw(table) {
+  // not sure how it sorts, need to investigate
+  table = table.sort((firstItem, secondItem) => firstItem[1] - secondItem[1]);
+
   localStorage.setItem("scoresTable", JSON.stringify(table));
   redrawHighscores(table);
 }
@@ -86,11 +89,5 @@ function redrawHighscores(table) {
                           table[i]["lname"] + spacer + 
                           table[i]["score"];
     highscoresSection.appendChild(liChild);
-  }
-}
-
-function sortTable(table) {
-  for (var i = 0; i < table.length; i++) {
-
   }
 }
