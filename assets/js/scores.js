@@ -81,7 +81,7 @@ function saveAndRedraw(table) {
           continue;
         }
         // compare this and the next score
-        if (table[i]["score"] < table[i - 1]["score"]) {
+        if (table[i]["score"] > table[i - 1]["score"]) {
           //then swap elements
           var _ = table[i - 1]["score"];
           table[i - 1]["score"] = table[i]["score"];
