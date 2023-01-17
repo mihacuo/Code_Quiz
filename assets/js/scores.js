@@ -1,4 +1,5 @@
 console.log("scores.js loaded");
+console.log("scores.js loaded");
 
 // let's get score from the local storage NAME = scoresTable
 var score = localStorage.getItem("totalPoints");
@@ -17,6 +18,20 @@ clearHighscoresButton.addEventListener("click", function () {
   table = [];
   saveAndRedraw(table);
 });
+
+console.log('23322332323232')
+if (localStorage.getItem("scoresTable") === null) {
+  //scores table is empty
+  // initialise new array
+  console.log("create empty table");
+  var table = [];
+} else {
+  //load existing scores table
+  console.log("loadng exisitng array");
+  var table = JSON.parse(localStorage.getItem("scoresTable"));
+  redrawHighscores(table);
+}
+
 if (score === 0) {
   invitationSection.textContent =
     "Unfortunately with 0 score you are NOT eligible to be logged in the highscores table";
@@ -28,17 +43,7 @@ if (score === 0) {
   invitationSection.setAttribute("class", "correct1");
   saveScoreForm.setAttribute("class", "saltChiliRibs");
   // we have a >0 score, need to load the local storage if exisits
-  if (localStorage.getItem("scoresTable") === null) {
-    //scores table is empty
-    // initialise new array
-    console.log("create empty table");
-    var table = [];
-  } else {
-    //load existing scores table
-    console.log("loadng exisitng array");
-    var table = JSON.parse(localStorage.getItem("scoresTable"));
-    redrawHighscores(table);
-  }
+
   saveButton.addEventListener("click", function (event) {
     // get players name
 
@@ -76,7 +81,7 @@ function saveAndRedraw(table) {
           continue;
         }
         // compare this and the next score
-        if (table[i]["score"] < table[i - 1]["score"]) {
+        if (table[i]["score"] > table[i - 1]["score"]) {
           //then swap elements
           var _ = table[i - 1]["score"];
           table[i - 1]["score"] = table[i]["score"];
@@ -85,7 +90,7 @@ function saveAndRedraw(table) {
         }
       }
     }
-    console.log('sorted table');
+    console.log("sorted table");
     console.log(table);
   }
 
