@@ -30,7 +30,9 @@ If score above 0 record your name in the highscores table
 ## Help
 
 contact
+
 mihhail@odnolko@gmail.com 
+
 for any help
 
 ## Authors
